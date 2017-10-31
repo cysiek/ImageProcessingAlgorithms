@@ -1,0 +1,10 @@
+cv::Mat img = cv::imread("D:\\temp\\car_plate.jpg");
+cv::Point2f a1(25, 18), b1(279, 27), c1(279, 79), a2(0, 0), b2(img.size().width, 0), c2(img.size().width, img.size().height);
+//cv::Point2f a1(0, 16), b1(303, 28), c1(303, 81), a2(0, 0), b2(img.size().width, 0), c2(img.size().width, img.size().height);
+cv::Point2f src[] = {a1, b1, c1};
+cv::Point2f dst[] = {a2, b2, c2};
+cv::Mat warpMat = cv::getAffineTransform(src, dst);
+cv::warpAffine(img, img, warpMat, img.size());
+cv::imshow("result", img);
+cv::waitKey(-1);
+return 0;
